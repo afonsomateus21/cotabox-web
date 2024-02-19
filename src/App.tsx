@@ -1,8 +1,12 @@
 import { Header } from "./components/Header"
+import { ParticipationChart } from "./components/ParticipationChart"
 
 function App() {
   return (
-    <Header />
+    <>
+      <Header />
+      <ParticipationChart />
+    </>
   )
 }
 
