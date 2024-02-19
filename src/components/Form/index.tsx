@@ -4,7 +4,7 @@ import { FormInputProps } from "../../types/form-input-props";
 import { userSchema } from "./schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-export function Header() {
+export function UserForm() {
   const { 
     register, 
     handleSubmit, 
@@ -16,8 +16,7 @@ export function Header() {
   } 
 
   return (
-    <header className="h-60 md:h-48 w-full bg-blue-400 fixed top-0 left-0">
-      <form  
+    <form  
         onSubmit={handleSubmit(onSubmit)}
         className="w-full h-full flex flex-col lg:flex-row items-center justify-evenly">
         <div>
@@ -52,6 +51,5 @@ export function Header() {
           SEND
         </button>
       </form>
-    </header>
   );
 }
