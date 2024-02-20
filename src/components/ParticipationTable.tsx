@@ -22,7 +22,7 @@ export function ParticipationTable() {
         </thead>
         <tbody>
           {
-            users.map((user, index) => (
+            users?.map((user, index) => (
               <tr className="border border-black" key={user.id}>
                 <td className="border border-black">
                   <span className="text-xl p-2">{index + 1}</span>

@@ -25,11 +25,7 @@ export function UsersProvider({ children }: UsersProviderProps) {
 
   useEffect(() => {
     setUsers(data?.users);
-  }, [])
-
-  useEffect(() => {
-    console.log(users);
-  }, [users])
+  }, [users, data])
 
   async function createUser(user: UserInput) {
     return Promise.resolve()
