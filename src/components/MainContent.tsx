@@ -2,6 +2,8 @@ import { ParticipationChart } from "./ParticipationChart";
 import { ParticipationTable } from "./ParticipationTable";
 
 export function MainContent() {
+  
+
   return (
     <main className="h-screen mt-80 lg:mt-48 lg:p-6 flex flex-col items-center justify-start p-3">
       <h1 className="text-3xl">Data</h1>

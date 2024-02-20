@@ -1,8 +1,9 @@
 import { User } from "./user";
 
-type UserInput = Omit<User, 'id'>;
+export type UserInput = Omit<User, 'id'>;
 
 export interface UserContextData {
   users: User[];
+  loading: boolean;
   createUser: (user: UserInput) => Promise<void>;
 }

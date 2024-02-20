@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { UserContextData } from "../types/user-context-data";
+import { UserContextData, UserInput } from "../types/user-context-data";
 import { UsersProviderProps } from "../types/users-provider-props";
 import { gql, useQuery } from "@apollo/client";
 import { User } from "../types/user";
@@ -24,21 +24,19 @@ export function UsersProvider({ children }: UsersProviderProps) {
   const [ users, setUsers ] = useState<User[]>([]);
 
   useEffect(() => {
-    if (data) {
-      setUsers(data.users); // definindo users apenas quando data não for undefined
-    }
+    setUsers(data?.users);
   }, [])
 
   useEffect(() => {
     console.log(users);
   }, [users])
 
-  async function createUser(user: any) {
+  async function createUser(user: UserInput) {
     return Promise.resolve()
   }
 
   return (
-    <UsersContext.Provider value={{ users, createUser }}>
+    <UsersContext.Provider value={{ users, loading, createUser }}>
       { children }
     </UsersContext.Provider>
   )

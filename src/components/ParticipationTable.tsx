@@ -1,36 +1,7 @@
+import { useUsers } from "../hooks/useUsers";
+
 export function ParticipationTable() {
-  const employee = [
-    {
-      id: 1,
-      firstName: "Carlos",
-      lastName: "Moura",
-      participation: 5
-    },
-    {
-      id: 1,
-      firstName: "Fernanda",
-      lastName: "Oliveira",
-      participation: 15
-    },
-    {
-      id: 1,
-      firstName: "Hugo",
-      lastName: "Silva",
-      participation: 20
-    },
-    {
-      id: 1,
-      firstName: "Eliza",
-      lastName: "Souza",
-      participation: 20
-    },
-    {
-      id: 1,
-      firstName: "Anderson",
-      lastName: "Santos",
-      participation: 40
-    },
-  ]
+  const { users } = useUsers();
 
   return (
     <div className="max-w-full overflow-x-auto lg:overflow-x-hidden lg:overflow-y-hidden lg:w-[600px]">
@@ -51,20 +22,20 @@ export function ParticipationTable() {
         </thead>
         <tbody>
           {
-            employee.map((employer, index) => (
-              <tr className="border border-black" key={index}>
+            users.map((user, index) => (
+              <tr className="border border-black" key={user.id}>
                 <td className="border border-black">
                   <span className="text-xl p-2">{index + 1}</span>
                 </td>
 
                 <td className="border border-black">
-                  <span className="text-xl pl-2">{employer.firstName}</span>
+                  <span className="text-xl pl-2">{user.firstName}</span>
                 </td>
                 <td className="border border-black pl-2">
-                  <span className="text-xl">{employer.lastName}</span>
+                  <span className="text-xl">{user.lastName}</span>
                 </td>
                 <td className="border border-black pl-2">
-                  <span className="text-xl">{`${employer.participation}%`}</span>
+                  <span className="text-xl">{`${user.participation}%`}</span>
                 </td>
               </tr>
             ))
