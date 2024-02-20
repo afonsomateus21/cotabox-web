@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import { ParticipationChart } from "./ParticipationChart";
 import { ParticipationTable } from "./ParticipationTable";
 
@@ -14,6 +15,7 @@ export function MainContent() {
           <ParticipationChart />
         </div>
       </div>
+      <Toaster position="top-right" />
     </main>
   );
 }
