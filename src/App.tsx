@@ -1,13 +1,11 @@
 import { Header } from "./components/Header"
-import { ParticipationChart } from "./components/ParticipationChart"
-import { ParticipationTable } from "./components/ParticipationTable"
+import { MainContent } from "./components/MainContent"
 
 function App() {
   return (
     <>
       <Header />
-      <ParticipationChart />
-      <ParticipationTable />
+      <MainContent />
     </>
   )
 }

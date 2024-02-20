@@ -9,13 +9,18 @@ export const data = [
   ["Andreza Santos", 40],
 ];
 
+export const options = {
+  pieHole: 0.2,
+  is3D: false,
+};
+
 export function ParticipationChart() {
   return (
-    <div className="mt-60">
+    <div className="z-0 w-full">
       <Chart
         chartType="PieChart"
+        options={options}
         data={data}
-        width={"100%"}
         height={"400px"}
       />
     </div>
