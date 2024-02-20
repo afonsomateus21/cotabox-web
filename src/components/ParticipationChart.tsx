@@ -1,13 +1,6 @@
 import { Chart } from "react-google-charts";
-
-export const data = [
-  ["Name", "Participation (%)"],
-  ["Carlos Moura", 5],
-  ["Fernanda Oliveira", 15],
-  ["Eliza Souza", 20],
-  ["Fernanda Oliveira", 15],
-  ["Andreza Santos", 40],
-];
+import { useUsers } from "../hooks/useUsers";
+import { transformUsersArrayToChartFormat } from "../utils/common";
 
 export const options = {
   pieHole: 0.2,
@@ -15,12 +8,15 @@ export const options = {
 };
 
 export function ParticipationChart() {
+  const { users } = useUsers();
+  const transformedUsersArray = transformUsersArrayToChartFormat(users);
+
   return (
     <div className="z-0 w-full">
       <Chart
         chartType="PieChart"
         options={options}
-        data={data}
+        data={transformedUsersArray !== null ? transformedUsersArray : []}
         height={"400px"}
       />
     </div>
