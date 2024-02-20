@@ -30,10 +30,17 @@ const CREATE_USER = gql`
   }
 `
 
+const DELETE_USER = gql`
+  mutation DeleteUser($data: DeleteUserInput!) {
+    deleteUser(data: $data)
+  }
+`
+
 export function UsersProvider({ children }: UsersProviderProps) {
   const { loading, data: queryData } = useQuery(GET_USERS);
   const [ users, setUsers ] = useState<User[]>([]);
   const [ createUserMutation ] = useMutation(CREATE_USER);
+  const [ deleteUserMutation ] = useMutation(DELETE_USER);
 
   useEffect(() => {
     setUsers(queryData?.users);
@@ -58,8 +65,24 @@ export function UsersProvider({ children }: UsersProviderProps) {
     }
   }
 
+  async function handleDeleteUser(id: string) {
+    if (!id) return;
+
+    const { data: mutationResponse } = await deleteUserMutation({
+      variables: {
+        data: {
+          id
+        }
+      }
+    });
+
+    if (mutationResponse) {
+      setUsers(users.filter(user => user.id !== id));
+    }
+  }
+
   return (
-    <UsersContext.Provider value={{ users, loading, handleCreateUser }}>
+    <UsersContext.Provider value={{ users, loading, handleCreateUser, handleDeleteUser }}>
       { children }
     </UsersContext.Provider>
   )

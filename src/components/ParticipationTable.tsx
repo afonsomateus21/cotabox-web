@@ -1,7 +1,8 @@
 import { useUsers } from "../hooks/useUsers";
+import { Trash2 } from 'lucide-react';
 
 export function ParticipationTable() {
-  const { users } = useUsers();
+  const { users, handleDeleteUser } = useUsers();
 
   return (
     <div className="max-w-full overflow-x-auto lg:overflow-x-hidden lg:overflow-y-hidden lg:w-[600px]">
@@ -17,6 +18,9 @@ export function ParticipationTable() {
             </th>
             <th className="border border-black">
               <span className="text-xl">Participation (%)</span>
+            </th>
+            <th className="border border-black">
+              <span className="text-xl">Action</span>
             </th>
           </tr>
         </thead>
@@ -36,6 +40,14 @@ export function ParticipationTable() {
                 </td>
                 <td className="border border-black pl-2">
                   <span className="text-xl">{`${user.participation}%`}</span>
+                </td>
+                <td className="border border-black pl-2">
+                  <Trash2 
+                    color="red" 
+                    size={20} 
+                    className="mx-auto my-0 cursor-pointer"  
+                    onClick={ () => handleDeleteUser(user.id) }
+                  />
                 </td>
               </tr>
             ))
