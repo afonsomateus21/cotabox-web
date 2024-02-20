@@ -3,6 +3,7 @@ import { UserInput } from "../Input";
 import { FormInputProps } from "../../types/form-input-props";
 import { userSchema } from "./schema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useUsers } from "../../hooks/useUsers";
 
 export function UserForm() {
   const { 
@@ -11,8 +12,16 @@ export function UserForm() {
     formState: { errors } 
   } = useForm<FormInputProps>({ resolver: yupResolver(userSchema) });
 
-  function onSubmit(data: FormInputProps) {
-    console.log(data)
+  const { handleCreateUser } = useUsers();
+
+  async function onSubmit(data: FormInputProps) {
+    const userPayload = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      participation: data.participation
+    }
+
+    await handleCreateUser(userPayload)
   } 
 
   return (

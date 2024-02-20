@@ -5,5 +5,5 @@ export type UserInput = Omit<User, 'id'>;
 export interface UserContextData {
   users: User[];
   loading: boolean;
-  createUser: (user: UserInput) => Promise<void>;
+  handleCreateUser: (user: UserInput) => Promise<void>;
 }
