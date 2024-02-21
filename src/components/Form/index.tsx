@@ -9,6 +9,7 @@ export function UserForm() {
   const { 
     register, 
     handleSubmit, 
+    setValue,
     formState: { errors } 
   } = useForm<FormInputProps>({ resolver: yupResolver(userSchema) });
 
@@ -21,7 +22,11 @@ export function UserForm() {
       participation: data.participation
     }
 
-    await handleCreateUser(userPayload)
+    await handleCreateUser(userPayload);
+
+    setValue('firstName', '');
+    setValue('lastName', '');
+    setValue('participation', 1);
   } 
 
   return (
