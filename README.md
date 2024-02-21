@@ -24,8 +24,9 @@ $ git clone git@github.com:afonsomateus21/cotabox-web.git se utilizar SSH
 $ npm install ou yarn 
 
 #Crie um arquivo .env na raiz do projeto com a seguinte variável:
-VITE_API_URI_DEVELOPMENT_MODE=http://localhost:4000/
+VITE_API_URI_DEVELOPMENT_MODE=http://localhost:3333/
 
+OBS: Certifique-se de colocar a porta definida na API
 ```
 
 ### 🎨 Execução
