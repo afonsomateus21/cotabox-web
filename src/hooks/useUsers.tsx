@@ -1,41 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserContextData, UserInput } from "../types/user-context-data";
 import { UsersProviderProps } from "../types/users-provider-props";
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { User } from "../types/user";
 import { toast } from "sonner";
+import { GET_USERS } from "../api/queries";
+import { CREATE_USER, DELETE_USER } from "../api/mutations";
 
 const UsersContext = createContext<UserContextData>(
   {} as UserContextData
 );
-
-const GET_USERS = gql`
-  query Users {
-    users {
-      id,
-      firstName,
-      lastName,
-      participation
-    }
-  }
-`;
-
-const CREATE_USER = gql`
-  mutation CreateUser($data: CreateUserInput!) {
-    createUser(data: $data) {
-      id,
-      firstName,
-      lastName,
-      participation
-    }
-  }
-`
-
-const DELETE_USER = gql`
-  mutation DeleteUser($data: DeleteUserInput!) {
-    deleteUser(data: $data)
-  }
-`
 
 export function UsersProvider({ children }: UsersProviderProps) {
   const { loading, data: queryData } = useQuery(GET_USERS);
