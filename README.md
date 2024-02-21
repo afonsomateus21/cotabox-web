@@ -36,12 +36,16 @@ $ npm run dev ou yarn dev
 # O aplicação ficará disponível na porta:5173 - acesse <http://localhost:5173>
 ```
 
+# Deploy
+O deploy da aplicação se encontra no seguinte [Link](https://cotabox-web.vercel.app/)
+
 # 🛠 Tecnologias
 As seguintes tecnologias foram utilizadas na construção do projeto:
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://react.dev/)
 - [Vite](https://vitejs.dev/)
 - [Apollo Client](https://www.apollographql.com/docs/react/)
+- [Vercel](https://vercel.com/)
 
 # Autor
 Afonso Mateus<br/>
