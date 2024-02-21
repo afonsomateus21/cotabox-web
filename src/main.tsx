@@ -5,9 +5,13 @@ import './index.css'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/',
+  uri: import.meta.env.MODE === "development" 
+    ? `${import.meta.env.VITE_API_URI_DEVELOPMENT_MODE}`
+    : `${import.meta.env.VITE_API_URI_PRODUCTION_MODE}`,
   cache: new InMemoryCache(),
 });
+
+console.log(import.meta.env.MODE)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
